@@ -3,28 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Taller Mecánico Los Pinos</title>
+  <title>Canteras Monroy | Cantera labrada a la medida</title>
+  <meta name="description" content="Canteras Monroy: fachadas, columnas, fuentes y piezas de cantera labrada a la medida. Cotiza por WhatsApp.">
   <style>
-    body { font-family: Georgia, serif; max-width: 600px; margin: 40px auto; padding: 0 16px; line-height: 1.6; color: #222; }
-    a.boton { display: inline-block; background: #1a7f37; color: #fff; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+    :root {
+      --piedra: #f4efe8;
+      --arena: #e6dccd;
+      --tierra: #8a5a3c;
+      --oscuro: #2b241f;
+      --texto: #3a322b;
+      --verde: #1f7a43;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--texto); background: var(--piedra); line-height: 1.65; }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; color: var(--oscuro); line-height: 1.2; }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 64px 0; }
+    h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 8px; }
+    .sub { color: var(--tierra); margin-bottom: 32px; }
+
+    header { background: var(--oscuro); position: sticky; top: 0; z-index: 10; }
+    header .wrap { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+    .logo { font-family: Georgia, serif; color: #fff; font-size: 1.2rem; letter-spacing: .5px; }
+    nav a { color: var(--arena); text-decoration: none; margin-left: 20px; font-size: .95rem; }
+    nav a:hover { color: #fff; }
+
+    .hero { background: linear-gradient(rgba(43,36,31,.68), rgba(43,36,31,.68)), url(img/portada.jpg) center/cover, repeating-linear-gradient(45deg, #5b4636 0 12px, #4f3d2f 12px 24px); color: #fff; text-align: center; padding: 96px 0; }
+    .hero h1 { color: #fff; font-size: clamp(2rem, 6vw, 3.4rem); margin-bottom: 16px; }
+    .hero p { max-width: 560px; margin: 0 auto 28px; color: var(--arena); font-size: 1.1rem; }
+
+    .boton { display: inline-block; background: var(--verde); color: #fff; padding: 14px 26px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+    .boton:hover { background: #17612f; }
+    .boton.claro { background: transparent; border: 2px solid var(--arena); color: var(--arena); margin-left: 8px; }
+    .boton.claro:hover { background: var(--arena); color: var(--oscuro); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+    .card { background: #fff; border-radius: 10px; padding: 22px; border-top: 4px solid var(--tierra); box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+    .card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .muestra { height: 130px; border-radius: 6px; margin-bottom: 14px; overflow: hidden; }
+    .muestra img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .galeria figure { border-radius: 10px; overflow: hidden; background: var(--arena); }
+    .galeria img { width: 100%; height: 240px; object-fit: cover; display: block; transition: transform .3s; }
+    .galeria figure:hover img { transform: scale(1.04); }
+    .galeria figcaption { padding: 10px 14px; font-size: .9rem; color: var(--tierra); background: #fff; }
+    .rosa { background: #d9a79a; } .amarilla { background: #dcc08a; } .gris { background: #a9a6a1; } .cafe { background: #a07a5a; }
+
+    .alt { background: var(--arena); }
+    .pasos { counter-reset: paso; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .paso { counter-increment: paso; padding-left: 52px; position: relative; }
+    .paso::before { content: counter(paso); position: absolute; left: 0; top: 0; width: 38px; height: 38px; border-radius: 50%; background: var(--oscuro); color: #fff; display: grid; place-items: center; font-family: Georgia, serif; font-size: 1.1rem; }
+    .paso h3 { font-size: 1.1rem; margin-bottom: 4px; }
+
+    .contacto { background: var(--oscuro); color: var(--arena); text-align: center; }
+    .contacto h2 { color: #fff; }
+    .contacto p { margin-bottom: 8px; }
+    .contacto .boton { margin: 20px 0 12px; }
+
+    footer { background: #1d1814; color: #a99c8d; text-align: center; padding: 20px; font-size: .85rem; }
+
+    .flotante { position: fixed; right: 16px; bottom: 16px; background: var(--verde); color: #fff; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,.3); z-index: 20; }
+
+    @media (max-width: 600px) {
+      nav a:not(.nav-cta) { display: none; }
+      .boton.claro { margin: 12px 0 0; }
+      section { padding: 48px 0; }
+    }
   </style>
 </head>
 <body>
-  <h1>Taller Mecánico Los Pinos</h1>
-  <p>Reparamos tu auto con honestidad y a buen precio.</p>
 
-  <h2>Qué hacemos</h2>
-  <ul>
-    <li>Cambio de aceite y filtros</li>
-    <li>Frenos y suspensión</li>
-    <li>Afinación y diagnóstico</li>
-  </ul>
+  <header>
+    <div class="wrap">
+      <span class="logo">Canteras Monroy</span>
+      <nav>
+        <a href="#productos">Productos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#proceso">Proceso</a>
+        <a class="nav-cta" href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-  <h2>Horario</h2>
-  <p>Lunes a sábado, de 9:00 a 18:00.</p>
+  <main>
+    <div class="hero">
+      <div class="wrap">
+        <h1>Cantera labrada, hecha a tu medida</h1>
+        <p>Fachadas, columnas, fuentes y detalles en piedra para casas, negocios y jardines. Cuéntanos tu proyecto y te cotizamos sin compromiso.</p>
+        <a class="boton" href="https://wa.me/527121503901?text=Hola,%20quiero%20cotizar%20una%20obra%20en%20cantera">Cotizar por WhatsApp</a>
+        <a class="boton claro" href="#productos">Ver tipos de cantera</a>
+      </div>
+    </div>
 
-  <h2>Contacto</h2>
-  <p>Escríbenos y te cotizamos sin compromiso.</p>
-  <a class="boton" href="https://wa.me/7121503901?text=Hola,%20quiero%20una%20cotización">Escribir por WhatsApp</a>
+    <section id="productos">
+      <div class="wrap">
+        <h2>Tipos de cantera</h2>
+        <p class="sub">Cada piedra tiene su color y carácter. Te ayudamos a elegir la ideal para tu obra.</p>
+        <div class="grid">
+          <div class="card"><div class="muestra rosa"><img src="img/cantera-rosa.jpg" alt="Muestra de cantera rosa" loading="lazy" onerror="this.remove()"></div><h3>Cantera rosa</h3><p>Tono cálido, muy usada en fachadas y arcos.</p></div>
+          <div class="card"><div class="muestra amarilla"><img src="img/cantera-amarilla.jpg" alt="Muestra de cantera amarilla" loading="lazy" onerror="this.remove()"></div><h3>Cantera amarilla</h3><p>Color claro y luminoso, ideal para interiores y columnas.</p></div>
+          <div class="card"><div class="muestra gris"><img src="img/cantera-gris.jpg" alt="Muestra de cantera gris" loading="lazy" onerror="this.remove()"></div><h3>Cantera gris</h3><p>Aspecto sobrio y moderno, resistente al exterior.</p></div>
+          <div class="card"><div class="muestra cafe"><img src="img/cantera-cafe.jpg" alt="Muestra de cantera cafe" loading="lazy" onerror="this.remove()"></div><h3>Cantera café</h3><p>Tono tierra, perfecta para jardines y muros.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="alt">
+      <div class="wrap">
+        <h2>Lo que hacemos</h2>
+        <p class="sub">Trabajo artesanal con acabado profesional.</p>
+        <div class="grid">
+          <div class="card"><h3>Fachadas y marcos</h3><p>Portones, ventanas y detalles que dan presencia a tu entrada.</p></div>
+          <div class="card"><h3>Columnas y balaustres</h3><p>Piezas torneadas o rectas para terrazas, escaleras y bardas.</p></div>
+          <div class="card"><h3>Fuentes y jardín</h3><p>Fuentes, bancas, macetones y piezas decorativas.</p></div>
+          <div class="card"><h3>Pisos y escalones</h3><p>Cantera cortada a medida para pisos, escalones y remates.</p></div>
+          <div class="card"><h3>Tallado personalizado</h3><p>Escudos, relieves y figuras según tu diseño.</p></div>
+          <div class="card"><h3>Entrega e instalación</h3><p>Coordinamos el envío y te orientamos en la colocación.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trabajos">
+      <div class="wrap">
+        <h2>Nuestros trabajos</h2>
+        <p class="sub">Algunas piezas y obras terminadas.</p>
+        <div class="galeria">
+          <figure><img src="img/trabajo1.jpg" alt="Fachada en cantera" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Fachada en cantera</figcaption></figure>
+          <figure><img src="img/trabajo2.jpg" alt="Columnas labradas" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Columnas labradas</figcaption></figure>
+          <figure><img src="img/trabajo3.jpg" alt="Fuente de jardín" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Fuente de jardín</figcaption></figure>
+          <figure><img src="img/trabajo4.jpg" alt="Marco de portón" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Marco de portón</figcaption></figure>
+          <figure><img src="img/trabajo5.jpg" alt="Escalones y pisos" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Escalones y pisos</figcaption></figure>
+          <figure><img src="img/trabajo6.jpg" alt="Tallado personalizado" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Tallado personalizado</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="proceso">
+      <div class="wrap">
+        <h2>Cómo trabajamos</h2>
+        <p class="sub">Un proceso simple, de la idea a la obra terminada.</p>
+        <div class="pasos">
+          <div class="paso"><h3>Cuéntanos tu idea</h3><p>Escríbenos por WhatsApp con medidas, fotos o un boceto.</p></div>
+          <div class="paso"><h3>Recibe tu cotización</h3><p>Te damos precio y tiempo estimado, sin compromiso.</p></div>
+          <div class="paso"><h3>Fabricamos y entregamos</h3><p>Labramos tus piezas y las llevamos a tu obra.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <div class="wrap">
+        <h2>Cotiza tu proyecto</h2>
+        <p>Envíanos tus medidas o una foto y te respondemos lo antes posible.</p>
+        <a class="boton" href="https://wa.me/527121503901?text=Hola,%20quiero%20cotizar%20una%20obra%20en%20cantera">Escribir por WhatsApp</a>
+        <p>Saltillo, Coahuila · Lunes a sábado, 9:00 a 18:00</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>© Canteras Monroy. Todos los derechos reservados.</footer>
+
+  <a class="flotante" href="https://wa.me/527121503901?text=Hola,%20quiero%20cotizar%20una%20obra%20en%20cantera">WhatsApp</a>
+
 </body>
 </html>
